@@ -1,5 +1,12 @@
-import app from "./app.js";
+import app from './app.js';
 
-app.listen(3010, () => {
-  console.log('running backend on http://localhost:3010');
-});
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3010;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+// For Vercel
+export default app;

@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "rollup": "^3.0.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@mui/material": "^5.16.8",
