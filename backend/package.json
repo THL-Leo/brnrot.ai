@@ -3,22 +3,22 @@
   "module": "index.js",
   "type": "module",
   "devDependencies": {
-    "vercel": "^32.4.1",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "vercel": "^32.3.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
     "hono": "^4.6.12",
+    "nodemon": "^3.1.7",
     "openai": "^4.73.1"
   },
   "scripts": {
-<<<<<<< HEAD
-    "dev": "bun run index.js"
-=======
+    "dev": "nodemon api/server.js",
     "start": "vercel dev",
     "deploy": "vercel"
->>>>>>> main
   }
 }
