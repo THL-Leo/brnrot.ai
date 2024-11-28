@@ -9,9 +9,10 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "hono": "^4.6.12"
+    "hono": "^4.6.12",
+    "openai": "^4.73.1"
   },
   "scripts": {
-  "dev": "bun run index.js"
+    "dev": "bun run index.js"
   }
 }
