@@ -3,6 +3,7 @@
   "module": "index.js",
   "type": "module",
   "devDependencies": {
+    "vercel": "^32.4.1",
     "@types/bun": "latest"
   },
   "peerDependencies": {
@@ -13,6 +14,11 @@
     "openai": "^4.73.1"
   },
   "scripts": {
+<<<<<<< HEAD
     "dev": "bun run index.js"
+=======
+    "start": "vercel dev",
+    "deploy": "vercel"
+>>>>>>> main
   }
 }

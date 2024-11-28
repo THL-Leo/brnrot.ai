@@ -1,10 +1,10 @@
 import React from 'react';
-import ApiTest from './APITest';
+import APITest from './ApiTest';
 
 function App() {
   return (
     <div>
-      <ApiTest />
+      <APITest />
     </div>
   );
 }
