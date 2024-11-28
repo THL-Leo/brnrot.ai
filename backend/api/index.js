@@ -2,10 +2,11 @@ import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 import { cors } from 'hono/cors'
 
-const app = new Hono().basePath('/api')
+const app = new Hono();
 
 app.use('/*', cors({
-  origin: ['http://localhost:3000', 'https://brnrotai.vercel.app/'], // Add your frontend domain
+  // origin: ['http://localhost:5173/', 'http://localhost:3000/', 'https://brnrotai.vercel.app/', 'https://brnrotai.vercel.app/*', 'https://brnrot-3uilhgqjo-thlleos-projects.vercel.app/', 'https://brnrotai-thl-leo-thlleos-projects.vercel.app/', 'https://brnrotai-thlleos-projects.vercel.app/'], // Add your frontend domain
+  origin: '*',
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],
   exposeHeaders: ['Content-Length', 'X-Requested-With']
