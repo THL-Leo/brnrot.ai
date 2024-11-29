@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../.env' });
 
 const APITest = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     // Fetch data from the backend API
-    fetch('http://localhost:3010/api')
+    fetch(`http://localhost:${process.env.BACKEND_PORT}/api`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
