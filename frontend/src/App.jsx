@@ -1,10 +1,11 @@
 import React from 'react';
-import APITest from './ApiTest';
+// import APITest from './ApiTest';
+import DegenPurityTest from "./DegenPurityTest";
 
 function App() {
   return (
     <div>
-      <APITest />
+      <DegenPurityTest />
     </div>
   );
 }
