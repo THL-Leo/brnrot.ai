@@ -60,8 +60,9 @@ const DegenPurityTest = () => {
     //     console.log(e);
     //   }
     // }
+    console.log('use api', import.meta.env.VITE_USE_PRODUCTION_API)
     const handleSubmit = (arr) => {
-        fetch(`/api/roast`, {
+        fetch(`${import.meta.env.VITE_BACKEND_URL || ''}/api/roast`, {
             method: "POST",
             body: JSON.stringify({ questions: arr }),
             headers: {
@@ -69,6 +70,7 @@ const DegenPurityTest = () => {
             },
         })
             .then((response) => {
+                //TODO: If code is 504 then its OPENAI too slow
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
