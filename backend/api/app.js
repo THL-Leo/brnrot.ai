@@ -3,7 +3,7 @@ import { OpenAI } from 'openai';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: './.env' });
 
 const app = express();
 app.use(express.json());
@@ -14,15 +14,17 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 app.get('/api', (req, res) => {
+  console.log('/api hit')
   res.json('hello world');
   res.statusCode = 200;
 });
 
-app.get('/api/roast', async (req, res) => {
+app.post('/api/roast', async (req, res) => {
+  console.log('/api/roast hit')
   try {
     const { questions } = req.body;
 
-    if (!questions || questions.len() == 0) {
+    if (!questions || questions.length == 0) {
       res.json({ res: "You are not skibidi" });
       return res.statusCode = 200;
     }
