@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
   Checkbox,
   Stack,
+  Button,
 } from "@mui/material";
 // Add your image import. Adjust the path according to your project structure
 import testImage from "./assets/degen.png"; // Change this to your image path
+import dotenv from 'dotenv';
 
+dotenv.config({ path: '../.env' });
 const questions = [
   "Held hands romantically?",
   "Been on a date?",
@@ -34,6 +37,34 @@ const questions = [
 ];
 
 const DegenPurityTest = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [roast, setRoast] = useState('');
+  
+  const handleSubmit = async (questions) => {
+    try {
+      console.log(process.env.BACKEND_PORT)
+      const res = await fetch(`http://localhost:${process.env.BACKEND_PORT}/api/roast`, {
+        body: JSON.stringify({ questions: questions }),
+        headers: new Headers({
+          'Content-type': 'application/json',
+        })
+      });
+      // const json = await res.json();
+      console.log(res)
+      // if (json.errors) {
+      //   console.log(json.errors[0].message);
+      //   throw new Error('DegenPurityTest.jsx: handleSubmit');
+      // }
+      
+      // setRoast(res.res);
+      // setSubmitted(true);
+    } catch(e) {
+      console.log('whattup gang shit went wrong')
+      console.log(e);
+    }
+  }
+  let markedTrue = new Set();
+
   return (
     <Box
       sx={{
@@ -60,48 +91,71 @@ const DegenPurityTest = () => {
         alt="Test image"
         src={testImage}
       />
-      <Typography sx={{ textAlign: "center", mb: 4 }}>
-        Click on every item you have done. MPS stands for Member of the
-        Preferred Sex.
-      </Typography>
-      <Box sx={{ textAlign: "left", padding: "0 1rem" }}>
-        <Stack spacing={0.5}>  {/* Reduced spacing between items */}
-          {questions.map((question, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 0,  // Remove gap
-              }}
-            >
-              <Typography
+      {!submitted ?
+      <Box> 
+        <Typography sx={{ textAlign: "center", mb: 4 }}>
+          Click on every item you have done. MPS stands for Member of the
+          Preferred Sex.
+        </Typography>
+        <Box sx={{ textAlign: "left", padding: "0 1rem" }}>
+          <Stack spacing={0.5}>  {/* Reduced spacing between items */}
+            {questions.map((question, index) => (
+              <Box
+                key={index}
                 sx={{
-                  width: '24px',  // Fixed width instead of minWidth
-                  fontSize: '1rem',
-                  textAlign: 'right',  // Right align the numbers
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0,  // Remove gap
                 }}
               >
-                {index + 1}
-              </Typography>
-              <Typography>.</Typography>
-              <Checkbox
-                sx={{
-                  padding: '2px',  // Reduce checkbox padding
-                  '& .MuiSvgIcon-root': {
-                    fontSize: '1.2rem',  // Smaller checkbox
-                  }
-                }}
-              />
-              <Typography sx={{ fontSize: '1rem' }}>
-                {question}
-              </Typography>
-            </Box>
-          ))}
-        </Stack>
+                <Typography
+                  sx={{
+                    width: '24px',  // Fixed width instead of minWidth
+                    fontSize: '1rem',
+                    textAlign: 'right',  // Right align the numbers
+                  }}
+                >
+                  {index + 1}
+                </Typography>
+                <Typography>.</Typography>
+                <Checkbox
+                  onChange={() => {
+                    _ = markedTrue.delete(question) ? _ : markedTrue.add(question); 
+                  }}
+                  sx={{
+                    padding: '2px',  // Reduce checkbox padding
+                    '& .MuiSvgIcon-root': {
+                      fontSize: '1.2rem',  // Smaller checkbox
+                    }
+                  }}
+                />
+                <Typography sx={{ fontSize: '1rem' }}>
+                  {question}
+                </Typography>
+              </Box>
+            ))}
+            <Button
+          sx={{
+            borderRadius: "5",
+            width: '3rem'
+          }}
+          variant="contained"
+          onClick={() => {
+            handleSubmit(Array.from(markedTrue))
+          }}
+        >
+          Submit
+        </Button>
+          </Stack>
+        </Box> 
       </Box>
-    </Box>
-  );
+        :
+      <div>
+        {roast}
+      </div>
+      }
+    </Box> 
+    );
 };
 
 export default DegenPurityTest;

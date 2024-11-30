@@ -1,7 +1,7 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import { OpenAI } from 'openai';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 dotenv.config({ path: '../.env' });
 
@@ -13,8 +13,7 @@ app.use(cors());
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
-
-app.get('/api', (res) => {
+app.get('/api', (req, res) => {
   res.json('hello world');
   res.statusCode = 200;
 });
@@ -22,6 +21,11 @@ app.get('/api', (res) => {
 app.get('/api/roast', async (req, res) => {
   try {
     const { questions } = req.body;
+
+    if (!questions || questions.len() == 0) {
+      res.json({ res: "You are not skibidi" });
+      return res.statusCode = 200;
+    }
 
     const roast = await client.chat.completions.create({
       model: 'gpt-4o-mini',
@@ -35,6 +39,7 @@ app.get('/api/roast', async (req, res) => {
     res.json({ res: roast.choices[0].message.content });
   } catch (e) {
     console.log(e);
+    throw new Error('api/roast error');
   }
 })
 
