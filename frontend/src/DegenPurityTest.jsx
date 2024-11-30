@@ -38,6 +38,8 @@ const DegenPurityTest = () => {
     <Box
       sx={{
         backgroundColor: "#fdf2c8",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
         color: "#000",
         height: "100vh",
         width: "100vw",
@@ -73,8 +75,8 @@ const DegenPurityTest = () => {
                 gap: 0,  // Remove gap
               }}
             >
-              <Typography 
-                sx={{ 
+              <Typography
+                sx={{
                   width: '24px',  // Fixed width instead of minWidth
                   fontSize: '1rem',
                   textAlign: 'right',  // Right align the numbers
@@ -83,7 +85,7 @@ const DegenPurityTest = () => {
                 {index + 1}
               </Typography>
               <Typography>.</Typography>
-              <Checkbox 
+              <Checkbox
                 sx={{
                   padding: '2px',  // Reduce checkbox padding
                   '& .MuiSvgIcon-root': {
