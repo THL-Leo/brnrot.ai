@@ -3,28 +3,42 @@ import { Box, Typography, Checkbox, Stack, Button } from "@mui/material";
 // Add your image import. Adjust the path according to your project structure
 import testImage from "./assets/degen.png"; // Change this to your image path
 const questions = [
-    "Held hands romantically?",
-    "Been on a date?",
-    "Been in a relationship?",
-    "Danced without leaving room for Jesus?",
-    "Kissed a non-family member?",
-    "Kissed a non-family member on the lips?",
-    "French kissed?",
-    "French kissed in public?",
-    "Kissed on the neck?",
-    "Kissed horizontally?",
-    "Given or received a hickey?",
-    "Kissed or been kissed on the breast?",
-    "Kissed someone below the belt?",
-    "Kissed for more than two hours consecutively?",
-    "Played a game involving stripping?",
-    "Seen or been seen by another person in a sensual context?",
-    "Masturbated?",
-    "Masturbated to a picture or video?",
-    "Masturbated while someone else was in the room?",
-    "Been caught masturbating?",
-    "Masturbated with an inanimate object?",
-    "Seen or read pornographic material?",
+    "E-sex",
+    "Discord e kitten",
+    "DRESS TO IMPRESS WITH MY BADDIES",
+    "caseoh",
+    "chill guy y",
+    "Seaside bakery",
+    "#womeninmalefields #meninwomenfields",
+    "Diddy party",
+    "sticking out ur gyatt for the rizzler",
+    "used gyatt to refer to someone’s ass",
+    "have you used type shit unironically",
+    "brat?",
+    "who was the purple man at mcdonald’s",
+    "what happened in ohio",
+    "Are you a chill guy?",
+    "Whats at costco?",
+    "Duke Dennis?",
+    "Kai Cenat?",
+    "Dafuq?",
+    "Nara Smith?",
+    "Skibidi?",
+    "Dexter Morgan?",
+    "Yaping?",
+    "Lookalike contests?",
+    "Mukbang in your car?",
+    "Pho Controversy",
+    "We listen and dont judge",
+    "Nikocado avocado",
+    "League of legend",
+    "Have you tried Grimace Shake",
+    "Are you a Sigma",
+    "Andrew Tate?",
+    "Listened to Thick of It unironically",
+    "Adin Ross",
+    "Jake Paul",
+    "Logan Paul",
 ];
 
 const DegenPurityTest = () => {
@@ -46,10 +60,10 @@ const DegenPurityTest = () => {
     //     console.log(e);
     //   }
     // }
-    const handleSubmit = () => {
+    const handleSubmit = (arr) => {
         fetch(`/api/roast`, {
             method: "POST",
-            body: JSON.stringify({ questions: questions }),
+            body: JSON.stringify({ questions: arr }),
             headers: {
                 "Content-type": "application/json",
             },
@@ -76,7 +90,7 @@ const DegenPurityTest = () => {
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 color: "#000",
-                height: "100vh",
+                height: "max-content",
                 width: "100vw",
                 fontFamily: "'Comic Sans', monospace", // More retro looking font
                 boxSizing: "border-box",
@@ -125,10 +139,12 @@ const DegenPurityTest = () => {
                                     </Typography>
                                     <Typography>.</Typography>
                                     <Checkbox
-                                        onChange={() => {
-                                            _ = markedTrue.delete(question)
-                                                ? _
-                                                : markedTrue.add(question);
+                                        onChange={(event) => {
+                                            if (event.target.checked) {
+                                                markedTrue.add(question);
+                                            } else {
+                                                markedTrue.delete(question);
+                                            }
                                         }}
                                         sx={{
                                             padding: "2px", // Reduce checkbox padding

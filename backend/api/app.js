@@ -3,16 +3,22 @@ import { OpenAI } from 'openai';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: './.env' });
+dotenv.config({ path: '../.env' });
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://brnrot-ai.vercel.app',
+  methods: ['GET', 'POST']
+}));
 // console.log(process.env);
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
+
 app.get('/api', (req, res) => {
   console.log('/api hit')
   res.json('hello world');
@@ -33,7 +39,8 @@ app.post('/api/roast', async (req, res) => {
       model: 'gpt-4o-mini',
       messages: [{
         role: 'user', content: `Given that a person has said true to these following questions: 
-        ${questions}, come up with a creative roast of the person`
+        ${questions}, come up with a creative roast of the person. Only keep your answer to the roast.
+        We don't need anything else.`
       }]
     });
 
