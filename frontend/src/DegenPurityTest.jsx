@@ -39,6 +39,16 @@ const questions = [
     "Adin Ross",
     "Jake Paul",
     "Logan Paul",
+    "We listen and dont judge",
+    "Nikocado avocado",
+    "League of legend",
+    "Have you tried Grimace Shake",
+    "Are you a Sigma",
+    "Andrew Tate?",
+    "Listened to Thick of It unironically",
+    "Adin Ross",
+    "Jake Paul",
+    "Logan Paul"
 ];
 
 const DegenPurityTest = () => {
@@ -61,27 +71,25 @@ const DegenPurityTest = () => {
     //   }
     // }
     console.log('use api', import.meta.env.VITE_USE_PRODUCTION_API)
-    const handleSubmit = (arr) => {
-        fetch(`${import.meta.env.VITE_BACKEND_URL || ''}/api/roast`, {
-            method: "POST",
-            body: JSON.stringify({ questions: arr }),
-            headers: {
-                "Content-type": "application/json",
-            },
-        })
-            .then((response) => {
-                //TODO: If code is 504 then its OPENAI too slow
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then((data) => {
-                console.log(`received: ${data}`);
-            })
-            .catch((error) => {
-                console.error("Error fetching API:", error);
+    const handleSubmit = async (arr) => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || ''}/api/roast`, {
+                method: "POST",
+                body: JSON.stringify({ questions: arr }),
+                headers: {
+                    "Content-type": "application/json",
+                },
             });
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.text();
+            console.log(`received: ${data}`);
+            setRoast(data);
+            setSubmitted(true);
+        } catch (error) {
+            console.error("Error fetching API:", error);
+        }
     };
     let markedTrue = new Set();
 
@@ -92,7 +100,7 @@ const DegenPurityTest = () => {
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 color: "#000",
-                height: "max-content",
+                minHeight: "100vh", // Change to cover full viewport height and beyond
                 width: "100vw",
                 fontFamily: "'Comic Sans', monospace", // More retro looking font
                 boxSizing: "border-box",
@@ -166,8 +174,8 @@ const DegenPurityTest = () => {
                                     width: "3rem",
                                 }}
                                 variant="contained"
-                                onClick={() => {
-                                    handleSubmit(Array.from(markedTrue));
+                                onClick={async () => {
+                                    await handleSubmit(Array.from(markedTrue));
                                 }}
                             >
                                 Submit
