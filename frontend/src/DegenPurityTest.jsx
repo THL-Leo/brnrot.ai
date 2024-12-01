@@ -115,7 +115,6 @@ const DegenPurityTest = () => {
     const [score, setScore] = useState(100);
     const [checkedItems, setCheckedItems] = useState(new Set());
 
-    console.log('use api', import.meta.env.VITE_USE_PRODUCTION_API)
     const handleSubmit = async (arr) => {
         try {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || ''}/api/roast`, {
@@ -152,12 +151,13 @@ const DegenPurityTest = () => {
                 fontFamily: "'Comic Sans', monospace", // More retro looking font
                 boxSizing: "border-box",
             }}
+            id= { Math.random() <= 0.6 ? "background" : Math.random() <= 0.85 ? "background2" : "background1" }
         >
             <Box
                 component="img"
                 sx={{
                     width: "100%",
-                    maxWidth: 600,
+                    maxWidth: 800,
                     height: "auto",
                     display: "block",
                     margin: "0 auto",
@@ -168,13 +168,13 @@ const DegenPurityTest = () => {
             />
             {!submitted ? (
                 <Box>
-                    <Typography sx={{ textAlign: "center", mb: 2, fontStyle: 'italic' }}>
+                    <Typography sx={{ textAlign: "center", mb: 2, fontStyle: 'italic', fontSize: '1.2rem' }}>
                         Welcome to the Degen Purity Test. This test will determine how much of a degenerate you are.
                     </Typography>
-                    <Typography sx={{ textAlign: "center", mb: 2, fontWeight: 'bold' }}>
+                    <Typography sx={{ textAlign: "center", mb: 2, fontWeight: 'bold', fontSize: '1.2rem' }}>
                         Caution: If you score less than 50, you might need to seek professional help.
                     </Typography>
-                    <Typography sx={{ textAlign: "center", mb: 2 }}>
+                    <Typography sx={{ textAlign: "center", mb: 2, fontSize: '1.2rem' }}>
                         Click on every item you know. You already have negative aura by even starting this test.
                     </Typography>
                     <Box sx={{ textAlign: "left", padding: "0 1rem" }}>
@@ -193,7 +193,7 @@ const DegenPurityTest = () => {
                                     <Typography
                                         sx={{
                                             width: "35px", // Increased width to fit three digits
-                                            fontSize: "1rem",
+                                            fontSize: "1.2rem",
                                             textAlign: "right", // Right align the numbers
                                             // paddingRight: "0.5rem", // Add some space between number and checkbox
                                         }}
@@ -225,7 +225,7 @@ const DegenPurityTest = () => {
                                     ) : question === "Don Pollo" ? (
                                         <Box component={"img"} src={donpollo} sx={{width: "15rem"}}/>
                                     ) : (
-                                        <Typography sx={{ fontSize: "1rem" }}>
+                                        <Typography sx={{ fontSize: "1.2rem" }}>
                                             {question}
                                         </Typography>
                                     )}

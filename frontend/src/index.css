@@ -66,3 +66,30 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#background {
+  background-image: url("./assets/chillguynobgopacity25.png");
+  background-repeat: repeat;
+  background-size: 250pt 250pt;
+  background-position: center;
+  /* filter: saturate(30%) opacity(10%); */
+  /* background-color: rgba(36, 36, 36, 0.9); */
+}
+
+#background1 {
+  background-image: url("./assets/subwaysurfer.gif");
+  background-repeat: repeat;
+  background-size: max(40%, 40%);
+  background-position: center;
+  /* filter: saturate(30%) opacity(10%); */
+  /* background-color: rgba(36, 36, 36, 0.9); */
+}
+
+#background2 {
+  background-image: url("./assets/parkourciv.png");
+  background-repeat: repeat;
+  background-size: max(40%, 40%);
+  background-position: center;
+  /* filter: saturate(30%) opacity(10%); */
+  /* background-color: rgba(36, 36, 36, 0.9); */
+}
