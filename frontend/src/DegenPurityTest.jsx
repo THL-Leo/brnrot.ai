@@ -4,6 +4,7 @@ import ReplayIcon from '@mui/icons-material/Replay';
 // Add your image import. Adjust the path according to your project structure
 import testImage from "./assets/degen.png"; // Change this to your image path
 import chillguy from "./assets/chillguy.png";
+import donpollo from "./assets/donpollo.png";
 
 const questions = [
     "Have you had e-sex",
@@ -72,6 +73,21 @@ const questions = [
     "Do you watch Minecraft Parkour reels?",
     "Have you seen Big Chungus?",
     "FE!N?",
+    "Have you watched Lebron You are my sunshine?",
+    "Do you know the Morbin time?",
+    "Have you said Damn Daniel before?",
+    "Do you know where the huzz at?",
+    "Have you said What are Those before?",
+    "Have you seen the Bee movie?",
+    "Do you know the OIIAIO cat?",
+    "Have you said Holy Moly?",
+    "Who is Livvy Dune",
+    "Who is the Blue Tie Kid?",
+    "Have you edged before?",
+    "Are you an Edgelord?",
+    "Do you mew?",
+    "Have you said L + Ratio unironically?",
+    "Don Pollo",
 ];
 
 const DegenPurityTest = () => {
@@ -174,12 +190,15 @@ const DegenPurityTest = () => {
                                             },
                                         }}
                                     />
-                                    {question !== "chill guy" ?
-                                    <Typography sx={{ fontSize: "1rem" }}>
-                                        {question}
-                                    </Typography> :
-                                    <Box component={"img"} src={chillguy} sx={{width: "15rem"}}/>
-                                    }
+                                    {question === "chill guy" ? (
+                                        <Box component={"img"} src={chillguy} sx={{width: "15rem"}}/>
+                                    ) : question === "Don Pollo" ? (
+                                        <Box component={"img"} src={donpollo} sx={{width: "15rem"}}/>
+                                    ) : (
+                                        <Typography sx={{ fontSize: "1rem" }}>
+                                            {question}
+                                        </Typography>
+                                    )}
                                 </Box>
                             ))}
                             <Button
