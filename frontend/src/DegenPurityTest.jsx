@@ -113,7 +113,7 @@ const DegenPurityTest = () => {
     const [submitted, setSubmitted] = useState(false);
     const [roast, setRoast] = useState("");
     const [score, setScore] = useState(100);
-    const [checkedItems, setCheckedItems] = useState(new Set());
+    // const [checkedItems, setCheckedItems] = useState(new Set());
 
     const handleSubmit = async (arr) => {
         try {
@@ -201,17 +201,14 @@ const DegenPurityTest = () => {
                                         {index + 1 + '.'}
                                     </Typography>
                                     <Checkbox
-                                        checked={checkedItems.has(question)}
+                                        checked={markedTrue.has(question)}
                                         onChange={(event) => {
-                                            const newCheckedItems = new Set(checkedItems);
                                             if (event.target.checked) {
-                                                newCheckedItems.add(question);
                                                 markedTrue.add(question);
                                             } else {
-                                                newCheckedItems.delete(question);
                                                 markedTrue.delete(question);
                                             }
-                                            setCheckedItems(newCheckedItems);
+
                                         }}
                                         sx={{
                                             padding: "2px", // Reduce checkbox padding
@@ -254,7 +251,7 @@ const DegenPurityTest = () => {
                                         mb: 2,
                                     }}
                                     onClick={() => {
-                                        setCheckedItems(new Set());
+                                        // setCheckedItems(new Set());
                                         markedTrue.clear();
                                     }}
                                     variant="contained"
@@ -309,3 +306,5 @@ const DegenPurityTest = () => {
 };
 
 export default DegenPurityTest;
+
+
