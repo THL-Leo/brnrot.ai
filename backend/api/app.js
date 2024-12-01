@@ -31,7 +31,8 @@ app.post('/api/roast', async (req, res) => {
     const { questions } = req.body;
 
     if (!questions || questions.length == 0) {
-      res.json({ res: "You are not skibidi" });
+      res.json('You are not skibidi');
+      // res.json({ res: "You are not skibidi" });
       return res.statusCode = 200;
     }
 
@@ -45,7 +46,7 @@ app.post('/api/roast', async (req, res) => {
     });
 
     // console.log(roast.choices[0].message.content);
-    res.json({ res: roast.choices[0].message.content });
+    res.json( roast.choices[0].message.content );
   } catch (e) {
     console.log(e);
     throw new Error('api/roast error');

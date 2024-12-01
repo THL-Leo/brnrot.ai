@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Box, Typography, Checkbox, Stack, Button } from "@mui/material";
+import ReplayIcon from '@mui/icons-material/Replay';
 // Add your image import. Adjust the path according to your project structure
 import testImage from "./assets/degen.png"; // Change this to your image path
+import chillguy from "./assets/chillguy.png";
+
 const questions = [
-    "E-sex",
-    "Discord e kitten",
-    "DRESS TO IMPRESS WITH MY BADDIES",
+    "Have you had e-sex",
+    "Have or are a Discord e kitten",
+    "Played DRESS TO IMPRESS WITH MY BADDIES",
     "caseoh",
-    "chill guy y",
+    "chill guy",
     "Seaside bakery",
     "#womeninmalefields #meninwomenfields",
     "Diddy party",
@@ -34,42 +37,28 @@ const questions = [
     "League of legend",
     "Have you tried Grimace Shake",
     "Are you a Sigma",
-    "Andrew Tate?",
+    "Do you watch Andrew Tate?",
     "Listened to Thick of It unironically",
-    "Adin Ross",
-    "Jake Paul",
-    "Logan Paul",
+    "Do you watch Adin Ross",
+    "Do you watch Jake Paul",
+    "Do you watch Logan Paul",
     "We listen and dont judge",
-    "Nikocado avocado",
-    "League of legend",
+    "Do you watch Nikocado avocado",
+    "Do you play League of Legends",
+    "Are you Diamond or higher",
+    "Have you bought a skin for a egirl",
     "Have you tried Grimace Shake",
     "Are you a Sigma",
     "Andrew Tate?",
     "Listened to Thick of It unironically",
-    "Adin Ross",
-    "Jake Paul",
-    "Logan Paul"
+    "Do you know all the Chris Chan lore",
 ];
 
 const DegenPurityTest = () => {
     const [submitted, setSubmitted] = useState(false);
     const [roast, setRoast] = useState("");
+    const [score, setScore] = useState(100);
 
-    // const handleSubmit = async (questions) => {
-    //   try {
-    //     const res = await fetch(`/api/roast`, {
-    //       method: 'POST',
-    //       body: JSON.stringify({ questions: questions }),
-    //       headers: {
-    //         'Content-type': 'application/json',
-    //       }
-    //     });
-    //     console.log(res)
-    //   } catch(e) {
-    //     console.log('whattup gang shit went wrong')
-    //     console.log(e);
-    //   }
-    // }
     console.log('use api', import.meta.env.VITE_USE_PRODUCTION_API)
     const handleSubmit = async (arr) => {
         try {
@@ -84,9 +73,11 @@ const DegenPurityTest = () => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.text();
-            console.log(`received: ${data}`);
+            console.log(`received: ${data.res}`);
             setRoast(data);
+            setScore(100 - arr.length);
             setSubmitted(true);
+            
         } catch (error) {
             console.error("Error fetching API:", error);
         }
@@ -163,9 +154,12 @@ const DegenPurityTest = () => {
                                             },
                                         }}
                                     />
+                                    {question !== "chill guy" ?
                                     <Typography sx={{ fontSize: "1rem" }}>
                                         {question}
-                                    </Typography>
+                                    </Typography> :
+                                    <Box component={"img"} src={chillguy} sx={{width: "15rem"}}/>
+                                    }
                                 </Box>
                             ))}
                             <Button
@@ -184,7 +178,25 @@ const DegenPurityTest = () => {
                     </Box>
                 </Box>
             ) : (
-                <div>{roast}</div>
+                <Box
+                    sx={{
+                        justifyContent: "center",
+                        textAlign: "center"
+                    }}
+                >
+                    <h1> {score} </h1>
+                    <h2> {roast} </h2>
+                    <Button
+                        variant="outlined"
+                        onClick={() => {
+                            setScore(100);
+                            setSubmitted(false);
+                            setRoast('');
+                        }}
+                    >
+                        <ReplayIcon />
+                    </Button>
+                </Box>
             )}
         </Box>
     );
