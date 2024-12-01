@@ -10,90 +10,110 @@ const questions = [
     "Have you had e-sex",
     "Have or are a Discord e kitten",
     "Played DRESS TO IMPRESS WITH MY BADDIES",
-    "Have you watched Caseoh",
+    "Do you watch Caseoh?",
     "chill guy",
     "Have you been to Seaside bakery?",
-    "#womeninmalefields #meninwomenfields",
-    "Do you want to go to Diddy party",
+    "Do you know #womeninmalefields or #meninwomenfields?",
+    "Do you want to go to a Diddy party",
     "Sticking out your gyatt for the rizzler",
     "Have you used gyatt to refer to someone’s ass",
-    "Have you used type shit unironically",
+    "Do you use type shit unironically?",
     "brat?",
     "Who is the purple man at mcdonald’s",
     "What happened in ohio",
-    "Are you a chill guy?",
     "What's at costco?",
     "Do you watch Duke Dennis?",
-    "Do you watch Kai Cenat?",
+    "Are you a fan of Kai Cenat?",
     "Dafuq?",
     "Do you know Nara Smith?",
     "Who is Skibidi Toilet?",
-    "Do you know Dexter Morgan?",
+    "Have you heard of Dexter Morgan?",
     "Do you yap a lot?",
-    "Have you watched any Lookalike contest reels?",
-    "Have you watched Mukbang in your car?",
-    "Do you know of the Pho Controversy",
-    "Do you know the We listen and don't judge trend",
+    "Watched any Lookalike contest reels?",
+    "Have you enjoyed Mukbang in your car?",
+    "Do you know of the Pho Controversy?",
+    "Know the 'We listen and don't judge' trend?",
     "Do you follow Nikocado Avocado's lore?",
-    "Have you tried Grimace Shake",
-    "Are you a Sigma",
+    "Tried Grimace Shake?",
+    "Are you a Sigma?",
     "Do you watch Andrew Tate?",
+    "Don Pollo",
     "Listened to Thick of It unironically",
-    "Do you watch Adin Ross",
-    "Do you watch Jake Paul",
-    "Do you watch Logan Paul",
+    "Ever watched Adin Ross?",
+    "Have you seen Jake Paul?",
+    "Do you watch Logan Paul?",
     "We listen and dont judge",
-    "Do you watch Nikocado avocado",
-    "Do you play League of Legends",
-    "Are you Diamond or higher",
-    "Have you bought a skin for a egirl",
-    "Do you know all the Chris Chan lore",
-    "Are you a member of TPOT",
-    "Have you tried Lunchly",
+    "Are you into Nikocado avocado?",
+    "Do you play League of Legends?",
+    "Reached Diamond or higher in LoL?",
+    "Bought a skin for an e-girl?",
+    "Know all the Chris Chan lore?",
+    "Are you a member of TPOT?",
+    "Have you tried Lunchly?",
     "Have you been Gooning?",
     "Do you know Bing Chilling?",
-    "Do you talk to chat?",
+    "Talked to chat as if you're streaming?",
     "Have you been mogged or mogged anyone?",
-    "Are you a glizzy gobbler?",
+    "Would you call yourself a glizzy gobbler?",
     "Do you watch Nickeh30?",
     "Have you T-posed before?",
     "Have you fanum taxed?",
-    "Do you do things The Ocky Way?",
+    "Do things The Ocky Way?",
     "Do you watch IShowSpeed?",
-    "Have you ever hit the Griddy?",
+    "Hit the Griddy recently?",
     "Do you know the way?",
     "Are you the Sussy Imposter?",
     "Did you pray today?",
-    "Have you bought Fortnite Battle Pass?",
+    "Bought the Fortnite Battle Pass?",
     "Do you play Pokemon Go everyday?",
-    "Do you like the Smurf Cat?",
-    "Do you play Valorant?",
-    "Have you meowed for heals or asked someone to meow for heals?",
+    "Are you a fan of the Smurf Cat?",
+    "Play Valorant often?",
+    "Meowed for heals or asked someone to?",
     "Do you watch Subway Surfer reels?",
-    "Do you watch Minecraft Parkour reels?",
-    "Have you seen Big Chungus?",
+    "Enjoy Minecraft Parkour reels?",
+    "Seen Big Chungus?",
     "FE!N?",
-    "Have you watched Lebron You are my sunshine?",
+    "Watched 'Lebron You are my sunshine'?",
     "Do you know the Morbin time?",
-    "Have you said Damn Daniel before?",
-    "Do you know where the huzz at?",
-    "Have you said What are Those before?",
-    "Have you seen the Bee movie?",
+    "Ever said Damn Daniel?",
+    "Know where the huzz at?",
+    "Have you said What are Those?",
+    "Seen the Bee movie?",
     "Do you know the OIIAIO cat?",
     "Have you said Holy Moly?",
-    "Who is Livvy Dune",
-    "Who is the Blue Tie Kid?",
+    "Who is Livvy Dune?",
+    "Recognize the Blue Tie Kid?",
     "Have you edged before?",
     "Are you an Edgelord?",
     "Do you mew?",
-    "Have you said L + Ratio unironically?",
-    "Don Pollo",
+    "Used L + Ratio unironically?",
+    "Do you have negative aura?",
+    "Do you pass the vibe check?",
+    "Ever tried looksmaxxing?",
+    "Are you in your Winter Arc?",
+    "Said 'On some chill shit' unironically?",
+    "Used 'On God' or 'On Ja' before?",
+    "Ever touched grass?",
+    "Say 'bruh' daily?",
+    "Do you have negative rizz?",
+    "Have you glazed someone or been glazed?",
+    "Say 'Sheesh' unironically?",
+    "Ever said 'I like ya cut g' to a haircut?",
+    "Participated in No Nut November?",
+    "Are you zesty?",
+    "Know James Hutcherson or his song 'Whistle'?",
+    "Are you delulu?",
+    "Listened to 'Kiki do you love me'?",
+    "Used 'goofy ahh' or '___ ahh' unironically?",
+    "Have you heard of Baby Gronk?",
+    "Said 'Bussing' unironically?"
 ];
 
 const DegenPurityTest = () => {
     const [submitted, setSubmitted] = useState(false);
     const [roast, setRoast] = useState("");
     const [score, setScore] = useState(100);
+    const [checkedItems, setCheckedItems] = useState(new Set());
 
     console.log('use api', import.meta.env.VITE_USE_PRODUCTION_API)
     const handleSubmit = async (arr) => {
@@ -128,7 +148,7 @@ const DegenPurityTest = () => {
                 backgroundRepeat: "no-repeat",
                 color: "#000",
                 minHeight: "100vh", // Change to cover full viewport height and beyond
-                width: "100vw",
+                minWidth: "100vw",
                 fontFamily: "'Comic Sans', monospace", // More retro looking font
                 boxSizing: "border-box",
             }}
@@ -148,9 +168,14 @@ const DegenPurityTest = () => {
             />
             {!submitted ? (
                 <Box>
-                    <Typography sx={{ textAlign: "center", mb: 4 }}>
-                        Click on every item you have done. MPS stands for Member
-                        of the Preferred Sex.
+                    <Typography sx={{ textAlign: "center", mb: 2, fontStyle: 'italic' }}>
+                        Welcome to the Degen Purity Test. This test will determine how much of a degenerate you are.
+                    </Typography>
+                    <Typography sx={{ textAlign: "center", mb: 2, fontWeight: 'bold' }}>
+                        Caution: If you score less than 50, you might need to seek professional help.
+                    </Typography>
+                    <Typography sx={{ textAlign: "center", mb: 2 }}>
+                        Click on every item you know. You already have negative aura by even starting this test.
                     </Typography>
                     <Box sx={{ textAlign: "left", padding: "0 1rem" }}>
                         <Stack spacing={0.5}>
@@ -167,21 +192,26 @@ const DegenPurityTest = () => {
                                 >
                                     <Typography
                                         sx={{
-                                            width: "24px", // Fixed width instead of minWidth
+                                            width: "35px", // Increased width to fit three digits
                                             fontSize: "1rem",
                                             textAlign: "right", // Right align the numbers
+                                            // paddingRight: "0.5rem", // Add some space between number and checkbox
                                         }}
                                     >
-                                        {index + 1}
+                                        {index + 1 + '.'}
                                     </Typography>
-                                    <Typography>.</Typography>
                                     <Checkbox
+                                        checked={checkedItems.has(question)}
                                         onChange={(event) => {
+                                            const newCheckedItems = new Set(checkedItems);
                                             if (event.target.checked) {
+                                                newCheckedItems.add(question);
                                                 markedTrue.add(question);
                                             } else {
+                                                newCheckedItems.delete(question);
                                                 markedTrue.delete(question);
                                             }
+                                            setCheckedItems(newCheckedItems);
                                         }}
                                         sx={{
                                             padding: "2px", // Reduce checkbox padding
@@ -201,18 +231,37 @@ const DegenPurityTest = () => {
                                     )}
                                 </Box>
                             ))}
-                            <Button
-                                sx={{
-                                    borderRadius: "5",
-                                    width: "3rem",
-                                }}
-                                variant="contained"
-                                onClick={async () => {
-                                    await handleSubmit(Array.from(markedTrue));
-                                }}
-                            >
-                                Submit
-                            </Button>
+                            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'left' }}>
+                                <Button
+                                    sx={{
+                                        borderRadius: "5",
+                                        width: "5rem",
+                                        mt: 1,
+                                        mb: 2,
+                                    }}
+                                    variant="contained"
+                                    onClick={async () => {
+                                        await handleSubmit(Array.from(markedTrue));
+                                    }}
+                                >
+                                    Submit
+                                </Button>
+                                <Button
+                                    sx={{
+                                        borderRadius: "5",
+                                        width: "5rem",
+                                        mt: 1,
+                                        mb: 2,
+                                    }}
+                                    onClick={() => {
+                                        setCheckedItems(new Set());
+                                        markedTrue.clear();
+                                    }}
+                                    variant="contained"
+                                >
+                                    Clear
+                                </Button>
+                            </Box>
                         </Stack>
                     </Box>
                 </Box>
@@ -225,8 +274,26 @@ const DegenPurityTest = () => {
                 >
                     <h1> {score} </h1>
                     <h2> {roast} </h2>
+                    {score >= 91 && score <= 100 && (
+                        <h3>Test maker&apos;s notes: You&apos;re basically a saint. Touch some grass though.</h3>
+                    )}
+                    {score >= 71 && score <= 90 && (
+                        <h3>Test maker&apos;s notes: Slightly contaminated by the internet, but still salvageable.</h3>
+                    )}
+                    {score >= 51 && score <= 70 && (
+                        <h3>Test maker&apos;s notes: You&apos;re definitely spending too much time online.</h3>
+                    )}
+                    {score >= 31 && score <= 50 && (
+                        <h3>Test maker&apos;s notes: Serious degen behavior detected. Seek grass immediately.</h3>
+                    )}
+                    {score >= 11 && score <= 30 && (
+                        <h3>Test maker&apos;s notes: Critical levels of degeneration. Professional help recommended.</h3>
+                    )}
+                    {score >= 0 && score <= 10 && (
+                        <h3>Test maker&apos;s notes: Maximum degen achieved. Please delete your internet connection.</h3>
+                    )}
                     <Button
-                        variant="outlined"
+                        variant="contained"
                         onClick={() => {
                             setScore(100);
                             setSubmitted(false);
