@@ -71,7 +71,7 @@ const questions = [
     "Meowed for heals or asked someone to?",
     "Do you watch Subway Surfer reels?",
     "Enjoy Minecraft Parkour reels?",
-    "Seen Big Chungus?",
+    "Know Big Chungus?",
     "FE!N?",
     "Watched 'Lebron You are my sunshine'?",
     "Do you know the Morbin time?",
