@@ -212,9 +212,7 @@ const DegenPurityTest = () => {
                                         }}
                                         sx={{
                                             padding: "2px", // Reduce checkbox padding
-                                            "& .MuiSvgIcon-root": {
-                                                fontSize: "1.2rem", // Smaller checkbox
-                                            },
+                                            fontSize: "1.2rem", // Smaller checkbox
                                         }}
                                     />
                                     {question === "chill guy" ? (
