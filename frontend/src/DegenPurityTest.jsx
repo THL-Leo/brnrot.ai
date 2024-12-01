@@ -24,7 +24,7 @@ const questions = [
     "What's at costco?",
     "Do you watch Duke Dennis?",
     "Are you a fan of Kai Cenat?",
-    "Dafuq?",
+    "Listens to Thick of It unironically?",
     "Do you know Nara Smith?",
     "Who is Skibidi Toilet?",
     "Have you heard of Dexter Morgan?",
