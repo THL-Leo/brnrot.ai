@@ -201,7 +201,7 @@ const DegenPurityTest = () => {
                                         {index + 1 + '.'}
                                     </Typography>
                                     <Checkbox
-                                        checked={markedTrue.has(question)}
+                                        // checked={markedTrue.has(question)}
                                         onChange={(event) => {
                                             if (event.target.checked) {
                                                 markedTrue.add(question);
