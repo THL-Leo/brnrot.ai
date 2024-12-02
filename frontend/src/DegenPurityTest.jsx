@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Box, Typography, Checkbox, Stack, Button } from "@mui/material";
 import ReplayIcon from '@mui/icons-material/Replay';
 // Add your image import. Adjust the path according to your project structure
@@ -114,6 +114,8 @@ const DegenPurityTest = () => {
     const [submitted, setSubmitted] = useState(false);
     const [roast, setRoast] = useState("");
     const [score, setScore] = useState(100);
+    const [bg] = useState(Math.random())
+    const [bg2] = useState(Math.random())
     // const [checkedItems, setCheckedItems] = useState(new Set());
 
     const handleSubmit = async (arr) => {
@@ -152,7 +154,7 @@ const DegenPurityTest = () => {
                 fontFamily: "'Comic Sans', monospace", // More retro looking font
                 boxSizing: "border-box",
             }}
-            id= { Math.random() <= 0.6 ? "background" : Math.random() <= 0.85 ? "background2" : "background1" }
+            id= { bg <= 0.6 ? "background" : bg2 <= 0.85 ? "background2" : "background1" }
         >
             <Box
                 component="img"
